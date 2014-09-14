@@ -49,4 +49,6 @@ def do_video():
 
 if __name__ == '__main__':
     app.debug = True
+    if(app.debug):
+	print("WARNING: THE DEBUG MODE IS ON, THIS WILL GIVE A SHELL TO ANYONE VISITING AN ERROR PAGE! To remove this, set app.debug=False in the main.py script")
     app.run(host="0.0.0.0")
