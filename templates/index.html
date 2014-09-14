@@ -5,7 +5,9 @@
 </head>
 <body>
 Hi this is a raspberry camera
-
+{% if path is defined %}
 <img src="{{ url_for('static', filename=path) }}" alt="{{path}}"/>
+{% endif %}
+<a href="{{url_for('do_photo')}}" >Take a picture!</a>
 </body>
 </html>

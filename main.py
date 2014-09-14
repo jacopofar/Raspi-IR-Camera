@@ -20,9 +20,14 @@ def show_entries():
 
     filelist = os.listdir(os.getcwd())
     filelist = filter(lambda x: not os.path.isdir(x), filelist)
-    newest = max(filelist, key=lambda x: os.stat(x).st_mtime)
+    filelist = filter(lambda x: (x[-3:] in ['jpg','png']), filelist)
+    #pass the newest image or nothing
+    if(len(filelist)>0):
+        newest = max(filelist, key=lambda x: os.stat(x).st_mtime)
+        return render_template('index.html', path=newest)
+    else:
+        return render_template('index.html')
 
-    return render_template('index.html', path=newest)
 
 @app.route('/take_photo')
 def do_photo():
