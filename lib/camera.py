@@ -4,7 +4,7 @@ import time
 import functools
 import io
 import time
-import cv2
+#import cv2
 import numpy as np
 class PIC:
 
@@ -33,9 +33,9 @@ class PIC:
         stream = io.BytesIO()
         self.camera.capture(stream, format='jpeg')
         data = np.fromstring(stream.getvalue(), dtype=np.uint8)
-        image = cv2.imdecode(data, 1)
-        blur = cv2.medianBlur(image,1)
-        cv2.imwrite(filename,blur)
+       # image = cv2.imdecode(data, 1)
+       # blur = cv2.medianBlur(image,1)
+       # cv2.imwrite(filename,blur)
         return filename
 
 

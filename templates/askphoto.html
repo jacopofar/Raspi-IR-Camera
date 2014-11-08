@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Raspberry camera live picture</title>
+<script>
+window.onload=function(){
+	var r = new XMLHttpRequest();
+	r.open("GET", "/take_photo", true);
+	r.onreadystatechange = function () {
+	  if (r.readyState != 4 || r.status != 200) return;
+	  document.getElementById('livepicture').innerHTML='<img src="static/'+JSON.parse(r.response).filename+'" alt="live image" />';
+	  document.getElementById('loadmsg').innerHTML="Picture took! Loading...";
+	};
+	r.send();
+	document.getElementById('loadmsg').innerHTML="Smile! Taking picture...";
+};
+</script>
+</head>
+<body>
+<span id="loadmsg"></span>
+<div id="livepicture"></div>
+</body>
+</html>
