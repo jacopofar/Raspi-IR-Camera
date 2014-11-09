@@ -3,7 +3,7 @@
 <head>
 <title>Raspberry camera live picture</title>
 <script>
-window.onload=function(){
+var askpic=function(){
 	var r = new XMLHttpRequest();
 	r.open("GET", "/take_photo", true);
 	r.onreadystatechange = function () {
@@ -14,6 +14,8 @@ window.onload=function(){
 	r.send();
 	document.getElementById('loadmsg').innerHTML="Smile! Taking picture...";
 };
+window.onload=askpic;
+setInterval(askpic,60);
 </script>
 </head>
 <body>
